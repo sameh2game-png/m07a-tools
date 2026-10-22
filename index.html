@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M07A Tools</title>
+<meta name="description" content="M07A Tools: أداة مجانية لتنظيف الجهاز وتسريعه وحمايته، وإدارة التطبيقات، وتنزيل الفيديوهات والأغاني على ويندوز 10 و11.">
+<link rel="icon" href="img/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="M07A Tools">
+<meta property="og:title" content="M07A Tools">
+<meta property="og:description" content="أداة مجانية لتنظيف الجهاز وتسريعه وحمايته، وإدارة التطبيقات، وتنزيل الفيديوهات والأغاني على ويندوز 10 و11.">
+<meta property="og:url" content="https://sameh2game-png.github.io/m07a-tools/">
+<meta property="og:image" content="https://sameh2game-png.github.io/m07a-tools/img/logo.png">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#2b2d31">
+<link rel="canonical" href="https://sameh2game-png.github.io/m07a-tools/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Readex+Pro:wght@500;600;700&display=swap">
+<style>
+:root {
+  --bg: #232428; --panel: #2b2d31; --card: #313338; --card2: #383a40; --line: #44464c;
+  --text: #e6e6e6; --muted: #a9abb1; --accent: #4f8ad6; --red: #e53935; --red2: #ff6b5e;
+  --c1: #5b9be6; --c2: #5fb878; --c3: #a58be0; --c4: #45b8b8; --c5: #e3a35a; --c6: #db86ae; --c7: #e58a8a;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.75 "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif; }
+img { max-width: 100%; display: block; }
+a { color: var(--c1); text-decoration: none; }
+.ltr { direction: ltr; unicode-bidi: isolate; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: "Readex Pro", "IBM Plex Sans Arabic", sans-serif; line-height: 1.3; text-wrap: balance; margin: 0; }
+
+/* header */
+header { position: sticky; top: 0; z-index: 10; background: rgba(35, 36, 40, .88); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+header .wrap { display: flex; align-items: center; gap: 24px; min-height: 64px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--text); font: 700 19px "Readex Pro", sans-serif; }
+.brand img { width: 38px; height: 38px; }
+nav { display: flex; gap: 22px; margin-inline-start: auto; }
+.lang { font: 600 14px "Segoe UI", sans-serif; color: var(--text); background: transparent; border: 1px solid var(--line); border-radius: 8px; padding: 7px 12px; cursor: pointer; }
+.lang:hover { background: var(--card2); }
+nav a { color: var(--muted); font-size: 15px; }
+nav a:hover { color: var(--text); }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; border-radius: 10px; font-weight: 600; border: 1px solid var(--line); background: var(--card2); color: var(--text); transition: transform .15s, background .15s; }
+.btn:hover { transform: translateY(-1px); background: #41434a; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn.primary:hover { background: #5b97e3; }
+.btn svg { width: 20px; height: 20px; }
+header .btn { padding: 8px 16px; font-size: 14px; }
+
+/* hero */
+.hero { padding-block: 72px 56px; position: relative; overflow: hidden; }
+.hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+.hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 700; }
+.hero h1 em { font-style: normal; background: linear-gradient(90deg, var(--red), var(--red2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero p.lead { color: var(--muted); font-size: 18px; margin: 18px 0 28px; max-width: 34em; }
+.hero .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 18px; color: var(--muted); font-size: 14px; }
+.meta span::before { content: "•"; color: var(--red); margin-inline-end: 8px; }
+.logo-big { justify-self: center; width: min(340px, 80vw); height: auto; filter: drop-shadow(0 30px 60px rgba(0, 0, 0, .55)); }
+.streaks { position: absolute; inset: auto 0 18px auto; width: 45%; height: 60px; opacity: .35; background:
+  linear-gradient(90deg, transparent, var(--red)) 0 0 / 100% 6px no-repeat,
+  linear-gradient(90deg, transparent, var(--red)) 30% 22px / 80% 6px no-repeat,
+  linear-gradient(90deg, transparent, var(--red)) 60% 44px / 60% 6px no-repeat; }
+
+/* sections */
+section { padding-block: 64px; }
+.section-head { max-width: 640px; margin-bottom: 32px; }
+.section-head h2 { font-size: clamp(26px, 3.4vw, 36px); }
+.section-head p { color: var(--muted); margin: 10px 0 0; }
+.band { background: var(--panel); border-block: 1px solid var(--line); }
+
+/* gallery */
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.tab { font: 500 14px inherit; font-family: inherit; color: var(--muted); background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 7px 16px; cursor: pointer; }
+.tab[aria-selected="true"] { color: #fff; background: #34435a; border-color: var(--accent); }
+.shot { border-radius: 14px; border: 1px solid var(--line); overflow: hidden; background: var(--panel); box-shadow: 0 24px 60px rgba(0, 0, 0, .45); }
+.shot img { width: 100%; height: auto; }
+
+/* features */
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.feat { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; min-width: 0; }
+.feat .ico { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; margin-bottom: 12px; }
+.feat .ico svg { width: 22px; height: 22px; }
+.feat h3 { font-size: 17px; margin-bottom: 6px; }
+.feat p { color: var(--muted); font-size: 14px; margin: 0; }
+
+/* steps */
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; counter-reset: s; }
+.step { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; position: relative; min-width: 0; }
+.step::before { counter-increment: s; content: counter(s); display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; margin-bottom: 12px; }
+.step h3 { font-size: 16px; margin-bottom: 6px; }
+.step p { color: var(--muted); font-size: 14px; margin: 0; }
+kbd { font: 600 13px "Segoe UI", sans-serif; background: var(--card2); border: 1px solid var(--line); border-radius: 6px; padding: 1px 7px; direction: ltr; unicode-bidi: isolate; }
+
+/* safety + faq */
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+ul.safe { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+ul.safe li { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; display: flex; gap: 12px; align-items: flex-start; }
+ul.safe li::before { content: ""; flex: none; width: 10px; height: 10px; margin-top: 9px; border-radius: 50%; background: var(--c2); box-shadow: 0 0 0 4px rgba(95, 184, 120, .18); }
+details { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; }
+summary { cursor: pointer; font-weight: 600; }
+details p { color: var(--muted); margin: 10px 0 0; font-size: 15px; }
+
+/* developer */
+.dev { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; justify-content: space-between; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 28px; }
+.dev h2 { font-size: 26px; }
+.dev h2 b { color: var(--accent); }
+.socials { display: flex; flex-wrap: wrap; gap: 10px; }
+.social { display: flex; align-items: center; gap: 10px; padding: 8px 16px 8px 10px; border-radius: 10px; background: var(--card2); border: 1px solid var(--line); color: var(--text); }
+.social:hover { background: #41434a; }
+.social i { width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center; font-style: normal; }
+.social i svg { width: 20px; height: 20px; fill: #fff; }
+.social small { display: block; color: var(--muted); font-size: 12px; line-height: 1.2; direction: ltr; text-align: start; }
+.social b { display: block; font-size: 14px; line-height: 1.3; }
+
+footer { padding-block: 28px 40px; color: var(--muted); font-size: 14px; text-align: center; border-top: 1px solid var(--line); }
+
+@media (max-width: 900px) {
+  .hero .wrap { grid-template-columns: 1fr; text-align: center; }
+  .hero p.lead { margin-inline: auto; }
+  .hero .actions, .meta { justify-content: center; }
+  .grid, .steps { grid-template-columns: 1fr 1fr; }
+  .two { grid-template-columns: 1fr; }
+  nav { display: none; }
+  .lang { margin-inline-start: auto; }
+}
+@media (max-width: 520px) {
+  .grid, .steps { grid-template-columns: 1fr; }
+  .logo-big { width: 220px; }
+}
+
+/* ---- life: coloured light, gentle motion, an accent colour per card ---- */
+body { background:
+  radial-gradient(900px 600px at 85% -10%, rgba(79, 138, 214, .22), transparent 60%),
+  radial-gradient(700px 500px at -10% 30%, rgba(165, 139, 224, .16), transparent 60%),
+  radial-gradient(800px 600px at 110% 75%, rgba(229, 57, 53, .12), transparent 60%),
+  var(--bg); background-attachment: fixed; }
+.hero { padding-block: 84px 72px; }
+.hero .glow { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .55; pointer-events: none; animation: drift 14s ease-in-out infinite alternate; }
+.hero .g1 { width: 380px; height: 380px; background: #4f8ad6; inset-inline-end: 6%; top: 8%; }
+.hero .g2 { width: 300px; height: 300px; background: #a58be0; inset-inline-end: 22%; top: 40%; animation-delay: -5s; }
+.hero .g3 { width: 260px; height: 260px; background: #e53935; inset-inline-end: 2%; top: 52%; opacity: .35; animation-delay: -9s; }
+.hero .wrap { position: relative; z-index: 1; }
+.logo-big { animation: float 6s ease-in-out infinite; }
+@keyframes float { 50% { transform: translateY(-14px) rotate(-1.5deg); } }
+@keyframes drift { to { transform: translate(40px, -30px) scale(1.12); } }
+.badge { display: inline-flex; align-items: center; gap: 8px; padding: 5px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; color: #cfe0ff; background: rgba(79, 138, 214, .14); border: 1px solid rgba(79, 138, 214, .45); margin-bottom: 18px; }
+.badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #5fb878; box-shadow: 0 0 0 4px rgba(95, 184, 120, .25); }
+.btn.primary { background: linear-gradient(135deg, #4f8ad6, #8b6fe0); border-color: transparent; box-shadow: 0 10px 30px rgba(79, 138, 214, .35); }
+.btn.primary:hover { background: linear-gradient(135deg, #5b97e3, #9a80ea); box-shadow: 0 14px 38px rgba(139, 111, 224, .45); }
+.band { background: linear-gradient(180deg, rgba(43, 45, 49, .92), rgba(36, 39, 52, .92)); }
+.eyebrow { display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .02em; margin-bottom: 8px; background: linear-gradient(90deg, var(--c1), var(--c3)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.section-head h2::after { content: ""; display: block; width: 64px; height: 4px; border-radius: 4px; margin-top: 14px; background: linear-gradient(90deg, var(--red), var(--c5)); }
+.tab[aria-selected="true"] { background: linear-gradient(135deg, #4f8ad6, #8b6fe0); border-color: transparent; }
+.shot { box-shadow: 0 30px 80px rgba(0, 0, 0, .5), 0 0 0 1px rgba(255, 255, 255, .04), 0 0 120px rgba(79, 138, 214, .18); }
+.feat { --c: var(--c1); position: relative; overflow: hidden; transition: transform .2s, box-shadow .2s, border-color .2s; }
+.feat::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--c); }
+.feat:hover { transform: translateY(-4px); border-color: var(--c); box-shadow: 0 14px 34px rgba(0, 0, 0, .35), 0 0 30px color-mix(in srgb, var(--c) 35%, transparent); }
+.grid .feat:nth-child(1) { --c: var(--c2); } .grid .feat:nth-child(2) { --c: var(--c5); } .grid .feat:nth-child(3) { --c: var(--c3); } .grid .feat:nth-child(4) { --c: var(--c7); }
+.grid .feat:nth-child(5) { --c: var(--c4); } .grid .feat:nth-child(6) { --c: #f0b35e; } .grid .feat:nth-child(7) { --c: var(--c1); } .grid .feat:nth-child(8) { --c: var(--c6); }
+.step { transition: transform .2s; } .step:hover { transform: translateY(-3px); }
+.steps .step:nth-child(1)::before { background: linear-gradient(135deg, #5b9be6, #3f6fd0); }
+.steps .step:nth-child(2)::before { background: linear-gradient(135deg, #a58be0, #7a5cd0); }
+.steps .step:nth-child(3)::before { background: linear-gradient(135deg, #e3a35a, #d27a2c); }
+.steps .step:nth-child(4)::before { background: linear-gradient(135deg, #5fb878, #3a9a58); }
+ul.safe li { transition: border-color .2s; } ul.safe li:hover { border-color: var(--c2); }
+details[open] { border-color: var(--c1); }
+.dev { border: 1px solid transparent; background: linear-gradient(var(--card), var(--card)) padding-box, linear-gradient(120deg, #4f8ad6, #a58be0, #e53935) border-box; box-shadow: 0 0 60px rgba(165, 139, 224, .15); }
+.social { transition: transform .2s; } .social:hover { transform: translateY(-2px); }
+@media (prefers-reduced-motion: reduce) { .logo-big, .hero .glow { animation: none; } * { transition: none !important; } }
+
+/* ---- light effects ---- */
+header { transition: background .3s, box-shadow .3s; }
+header.scrolled { background: rgba(28, 29, 33, .96); box-shadow: 0 8px 30px rgba(0, 0, 0, .35); }
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
+.reveal.in { opacity: 1; transform: none; }
+.section-head h2::after { transform: scaleX(0); transform-origin: right; transition: transform .9s .2s ease; }
+[dir="ltr"] .section-head h2::after { transform-origin: left; }
+.section-head.in h2::after { transform: scaleX(1); }
+.hero h1 em { background: linear-gradient(90deg, #e53935, #ff8a50, #ffb86b, #ff6b5e, #e53935); background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; animation: shine 6s linear infinite; }
+@keyframes shine { to { background-position: 250% 0; } }
+.btn { position: relative; overflow: hidden; }
+.btn::after { content: ""; position: absolute; top: 0; bottom: 0; width: 40%; left: -60%; background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .28), transparent); transform: skewX(-20deg); transition: left .6s ease; pointer-events: none; }
+.btn:hover::after { left: 120%; }
+.spark { position: absolute; color: #fff; font-size: var(--s, 16px); left: var(--x); top: var(--y); opacity: 0; pointer-events: none; text-shadow: 0 0 12px rgba(255, 255, 255, .9); animation: twinkle var(--d, 4s) ease-in-out infinite; animation-delay: var(--t, 0s); z-index: 2; }
+@keyframes twinkle { 0%, 100% { opacity: 0; transform: scale(.4) rotate(0deg); } 50% { opacity: 1; transform: scale(1) rotate(45deg); } }
+.feat::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s; background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--c) 22%, transparent), transparent 60%); }
+.feat:hover::after { opacity: 1; }
+#shot { transition: opacity .25s ease, transform .35s ease; }
+#shot.swap { opacity: 0; transform: scale(.985); }
+.feat .ico { transition: transform .3s; } .feat:hover .ico { transform: scale(1.12) rotate(-6deg); }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } .spark { display: none; } .hero h1 em { animation: none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="img/logo.png" alt=""><span class="ltr">M07A Tools</span></a>
+    <nav>
+      <a href="#screens">الواجهة</a>
+      <a href="#features">المزايا</a>
+      <a href="#start">طريقة التشغيل</a>
+      <a href="#faq">الأسئلة الشائعة</a>
+    </nav>
+    <button class="lang" id="lang" type="button">English</button>
+    <a class="btn primary" href="https://github.com/sameh2game-png/m07a-tools/releases/latest/download/M07A-Tools.zip">تنزيل</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="glow g1"></div><div class="glow g2"></div><div class="glow g3"></div>
+    <span class="spark" style="--x:9%;--y:16%;--s:22px;--d:4.5s">&#x2726;</span><span class="spark" style="--x:30%;--y:10%;--s:14px;--d:3.6s;--t:-1.2s">&#x2726;</span><span class="spark" style="--x:4%;--y:62%;--s:16px;--d:5s;--t:-2.4s">&#x2726;</span><span class="spark" style="--x:34%;--y:72%;--s:12px;--d:3.2s;--t:-.6s">&#x2726;</span><span class="spark" style="--x:20%;--y:88%;--s:18px;--d:4.8s;--t:-3.1s">&#x2726;</span>
+    <div class="wrap">
+      <div>
+        <span class="badge">مجاني بالكامل • الإصدار 3.0</span>
+        <h1>جهازك <em>أسرع وأنظف</em> بنقرة واحدة</h1>
+        <p class="lead">أداة مجانية لويندوز تنظّف الملفات المؤقتة وذاكرة الألعاب بأمان، وتسرّع الجهاز، وتدير التطبيقات، وتفحص الفيروسات، وتنزّل الفيديوهات والأغاني، في برنامج واحد بواجهة عربية وإنجليزية.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://github.com/sameh2game-png/m07a-tools/releases/latest/download/M07A-Tools.zip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+            تنزيل M07A Tools
+          </a>
+          <a class="btn" href="#screens">شاهد الواجهة</a>
+        </div>
+        <div class="meta"><span>ويندوز 10 و11</span><span>بالعربية والإنجليزية</span><span class="ltr">384 KB</span></div>
+      </div>
+      <img class="logo-big" src="img/logo.png" alt="شعار M07A Tools" width="340" height="340">
+    </div>
+  </section>
+
+  <section class="band" id="screens">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">الواجهة</span><h2>واجهة بسيطة وهادئة</h2>
+        <p>كل شيء في مكان واضح. اختر صفحة لمشاهدتها.</p>
+      </div>
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" aria-selected="true" data-shot="home">الرئيسية</button>
+        <button class="tab" role="tab" aria-selected="false" data-shot="clean">التنظيف</button>
+        <button class="tab" role="tab" aria-selected="false" data-shot="apps">إدارة التطبيقات</button>
+        <button class="tab" role="tab" aria-selected="false" data-shot="uninstall">إلغاء التثبيت</button>
+        <button class="tab" role="tab" aria-selected="false" data-shot="protection">الحماية</button>
+        <button class="tab" role="tab" aria-selected="false" data-shot="tools">الأدوات</button>
+        <button class="tab" role="tab" aria-selected="false" data-shot="download">التنزيل</button>
+        <button class="tab" role="tab" aria-selected="false" data-shot="settings">الإعدادات</button>
+      </div>
+      <div class="shot"><img id="shot" src="img/shot-home.png" alt="الصفحة الرئيسية في M07A Tools" width="984" height="621"></div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">المزايا</span><h2>كل ما يحتاجه جهازك في برنامج واحد</h2>
+        <p>بدل خمسة برامج مختلفة، صفحة لكل مهمة.</p>
+      </div>
+      <div class="grid">
+        <div class="feat"><div class="ico" style="background:rgba(95,184,120,.15)"><svg viewBox="0 0 24 24" fill="none" stroke="#5fb878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg></div><h3>تنظيف آمن</h3><p>الملفات المؤقتة وذاكرة الألعاب والمتصفحات، مع فحص قبل الحذف.</p></div>
+        <div class="feat"><div class="ico" style="background:rgba(227,163,90,.15)"><svg viewBox="0 0 24 24" fill="none" stroke="#e3a35a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div><h3>تسريع الجهاز</h3><p>تحرير الذاكرة يدويًا أو تلقائيًا، دون المساس باللعبة المفتوحة.</p></div>
+        <div class="feat"><div class="ico" style="background:rgba(165,139,224,.15)"><svg viewBox="0 0 24 24" fill="none" stroke="#a58be0" stroke-width="2" stroke-linecap="round"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg></div><h3>إدارة التطبيقات</h3><p>أوقف تطبيقات بدء التشغيل وأغلق البرامج التي تستهلك الذاكرة.</p></div>
+        <div class="feat"><div class="ico" style="background:rgba(229,138,138,.15)"><svg viewBox="0 0 24 24" fill="none" stroke="#e58a8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/><path d="m14 4 6 6M20 4l-6 6"/></svg></div><h3>إلغاء التثبيت</h3><p>كل التطبيقات المثبتة مع البحث والترتيب حسب الحجم.</p></div>
+        <div class="feat"><div class="ico" style="background:rgba(69,184,184,.15)"><svg viewBox="0 0 24 24" fill="none" stroke="#45b8b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6z"/></svg></div><h3>الحماية</h3><p>فحص الفيروسات عبر Windows Defender، وتثبيت تحديثات ويندوز.</p></div>
+        <div class="feat"><div class="ico" style="background:rgba(227,163,90,.15)"><svg viewBox="0 0 24 24" fill="none" stroke="#e3a35a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></div><h3>إعداد ويندوز جديد</h3><p>التعريفات الناقصة ومكونات الألعاب من مصادرها الرسمية.</p></div>
+        <div class="feat"><div class="ico" style="background:rgba(91,155,230,.15)"><svg viewBox="0 0 24 24" fill="none" stroke="#5b9be6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg></div><h3>أدوات الإصلاح</h3><p>نقطة استعادة، وإصلاح ملفات ويندوز والشبكة وشريط المهام، ووضع الطاقة.</p></div>
+        <div class="feat"><div class="ico" style="background:rgba(219,134,174,.15)"><svg viewBox="0 0 24 24" fill="none" stroke="#db86ae" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></div><h3>التنزيل</h3><p>فيديوهات وأغانٍ وقوائم تشغيل كاملة بالجودة التي تختارها.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="start">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">ابدأ الآن</span><h2>طريقة التشغيل</h2>
+        <p>لا يحتاج إلى تثبيت. أربع خطوات في المرة الأولى فقط.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>فك الضغط</h3><p>انقر بزر الماوس الأيمن على الملف واختر <kbd>Extract All</kbd>.</p></div>
+        <div class="step"><h3>افتح البرنامج</h3><p>شغّل <span class="ltr">M07A Tools.exe</span> بنقرة مزدوجة.</p></div>
+        <div class="step"><h3>رسالة ويندوز</h3><p>إذا ظهرت رسالة <span class="ltr">Windows protected your PC</span> اضغط <kbd>More info</kbd> ثم <kbd>Run anyway</kbd>.</p></div>
+        <div class="step"><h3>صلاحيات المسؤول</h3><p>اختر <kbd>Yes</kbd> ليتمكن البرنامج من تنظيف ملفات النظام أيضًا.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap two">
+      <div>
+        <div class="section-head"><h2>ما لا يقترب منه البرنامج</h2></div>
+        <ul class="safe">
+          <li>ملفاتك الشخصية لا تُحدَّد للحذف أبدًا، وإن حددتها بنفسك يطلب البرنامج تأكيدًا.</li>
+          <li>الألعاب المثبتة وملفات الحفظ الخاصة بها.</li>
+          <li>البرامج المفتوحة: يتخطاها حتى تغلقها.</li>
+          <li>مكونات ويندوز الأساسية مخفية في صفحة إدارة التطبيقات حتى لا تُغلق بالخطأ.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="section-head"><h2>الأسئلة الشائعة</h2></div>
+        <details><summary>هل البرنامج مجاني؟</summary><p>نعم، مجاني بالكامل ودون إعلانات.</p></details>
+        <details><summary>لماذا يظهر تحذير من ويندوز؟</summary><p>يظهر هذا التحذير مع أي برنامج جديد غير موقّع من شركة كبيرة. تم فحص البرنامج باستخدام Windows Defender ولم يُعثر على أي تهديد.</p></details>
+        <details><summary>هل يعمل على ويندوز 7؟</summary><p>لا، يعمل على ويندوز 10 و11 فقط.</p></details>
+        <details><summary>هل يحتاج إلى الإنترنت؟</summary><p>التنظيف والتسريع يعملان دون إنترنت. صفحة التنزيل وتحديثات ويندوز وفحص الفيروسات تحتاج إلى الاتصال.</p></details>
+        <details><summary>هل يدعم اللغة الإنجليزية؟</summary><p>نعم، يمكنك التبديل بين العربية والإنجليزية من صفحة الإعدادات، وكذلك بين المظهر الرمادي والفاتح.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="dev">
+        <div>
+          <h2>تم التطوير بواسطة <b class="ltr">M07A</b></h2>
+          <p style="color:var(--muted);margin:6px 0 0">تابعني على حساباتي.</p>
+        </div>
+        <div class="socials">
+          <a class="social" href="https://www.youtube.com/@M.07A" target="_blank" rel="noopener"><i style="background:#ff0033"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg></i><span><b>YouTube</b><small>@M.07A</small></span></a>
+          <a class="social" href="https://www.tiktok.com/@1.m07a" target="_blank" rel="noopener"><i style="background:#111"><svg viewBox="0 0 24 24"><path d="M14 3h3c.3 2.2 1.7 3.6 4 3.8v3c-1.5 0-2.9-.5-4-1.3V15a6 6 0 1 1-6-6v3.2a2.8 2.8 0 1 0 3 2.8z"/></svg></i><span><b>TikTok</b><small>@1.m07a</small></span></a>
+          <a class="social" href="https://www.facebook.com/1.M07A" target="_blank" rel="noopener"><i style="background:#1877f2"><svg viewBox="0 0 24 24"><path d="M13.5 21v-7.5H16l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21z"/></svg></i><span><b>Facebook</b><small>1.M07A</small></span></a>
+          <a class="social" href="#" id="dc" title="انقر لنسخ اسم المستخدم"><i style="background:#5865f2"><svg viewBox="0 0 24 24"><path d="M19 6.2A16 16 0 0 0 15 5l-.5 1a14.5 14.5 0 0 0-5 0L9 5a16 16 0 0 0-4 1.2C2.5 10 1.8 13.6 2.1 17.2A16 16 0 0 0 7 19.6l1-1.6a10 10 0 0 1-1.6-.8l.4-.3a11.4 11.4 0 0 0 10.4 0l.4.3a10 10 0 0 1-1.6.8l1 1.6a16 16 0 0 0 4.9-2.4c.4-4.2-.7-7.8-2.9-11zM9 14.8c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2zm6 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2z"/></svg></i><span><b>Discord</b><small>1ts_ok</small></span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">© <span id="yr">2026</span> M07A. جميع الحقوق محفوظة. يستخدم البرنامج أدوات مفتوحة المصدر: <a href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a> و<a href="https://ffmpeg.org/">FFmpeg</a>.</div></footer>
+
+<script>
+  const names = { home: 'الرئيسية', clean: 'التنظيف', apps: 'إدارة التطبيقات', uninstall: 'إلغاء التثبيت', protection: 'الحماية', tools: 'الأدوات', download: 'التنزيل', settings: 'الإعدادات' };
+  const img = document.getElementById('shot');
+  document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(o => o.setAttribute('aria-selected', o === t));
+    img.classList.add('swap'); const next = shotBase() + t.dataset.shot + '.png'; setTimeout(() => { img.src = next; img.onload = () => img.classList.remove('swap'); }, 180);
+    img.alt = lang === 'en' ? 'M07A Tools: ' + en[names[t.dataset.shot]] : 'صفحة ' + names[t.dataset.shot] + ' في M07A Tools';
+  }));
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  // ---- light effects: things rise into view, header darkens on scroll, card light follows the mouse
+  const motionOk = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (motionOk && 'IntersectionObserver' in window) {
+    const els = document.querySelectorAll('.section-head, .tabs, .shot, .feat, .step, ul.safe li, details, .dev');
+    els.forEach(el => {
+      el.classList.add('reveal');
+      const sibs = [...el.parentNode.children].filter(c => c.matches('.feat, .step, li, details'));
+      const i = sibs.indexOf(el); if (i > 0) el.style.transitionDelay = (i * 70) + 'ms';
+    });
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .15 });
+    els.forEach(el => io.observe(el));
+  }
+  const hdr = document.querySelector('header');
+  addEventListener('scroll', () => hdr.classList.toggle('scrolled', scrollY > 20), { passive: true });
+  document.querySelectorAll('.feat').forEach(card => card.addEventListener('pointermove', e => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', (e.clientX - r.left) + 'px'); card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  }));
+  // ---- Arabic / English: every Arabic text piece on the page has its English line here
+  const en = {
+    'الواجهة': 'Screens', 'المزايا': 'Features', 'ابدأ الآن': 'Get started', 'مجاني بالكامل • الإصدار 3.0': 'Completely free • Version 3.0', 'طريقة التشغيل': 'How to run', 'الأسئلة الشائعة': 'FAQ', 'تنزيل': 'Download',
+    'جهازك': 'A', 'أسرع وأنظف': 'faster, cleaner', 'بنقرة واحدة': 'PC in one click',
+    'أداة مجانية لويندوز تنظّف الملفات المؤقتة وذاكرة الألعاب بأمان، وتسرّع الجهاز، وتدير التطبيقات، وتفحص الفيروسات، وتنزّل الفيديوهات والأغاني، في برنامج واحد بواجهة عربية وإنجليزية.': 'A free Windows tool that safely cleans temporary files and game caches, speeds up your PC, manages apps, scans for viruses, and downloads videos and music, all in one program with an Arabic and English interface.',
+    'تنزيل M07A Tools': 'Download M07A Tools', 'شاهد الواجهة': 'See the interface',
+    'الإصدار 3.0': 'Version 3.0', 'ويندوز 10 و11': 'Windows 10 and 11', 'مجاني بالكامل': 'Completely free', 'بالعربية والإنجليزية': 'Arabic and English',
+    'واجهة بسيطة وهادئة': 'A simple, calm interface', 'كل شيء في مكان واضح. اختر صفحة لمشاهدتها.': 'Everything has a clear place. Pick a page to see it.',
+    'الرئيسية': 'Home', 'التنظيف': 'Cleanup', 'إدارة التطبيقات': 'Programs', 'إلغاء التثبيت': 'Uninstall', 'الحماية': 'Protection', 'الأدوات': 'Tools', 'التنزيل': 'Download', 'الإعدادات': 'Settings',
+    'كل ما يحتاجه جهازك في برنامج واحد': 'Everything your PC needs in one program', 'بدل خمسة برامج مختلفة، صفحة لكل مهمة.': 'Instead of five different programs, one page for each job.',
+    'تنظيف آمن': 'Safe cleanup', 'الملفات المؤقتة وذاكرة الألعاب والمتصفحات، مع فحص قبل الحذف.': 'Temporary files and game and browser caches, scanned before anything is deleted.',
+    'تسريع الجهاز': 'Speed boost', 'تحرير الذاكرة يدويًا أو تلقائيًا، دون المساس باللعبة المفتوحة.': 'Frees memory manually or automatically, without touching the game you are playing.',
+    'أوقف تطبيقات بدء التشغيل وأغلق البرامج التي تستهلك الذاكرة.': 'Turn off startup apps and close programs that use too much memory.',
+    'كل التطبيقات المثبتة مع البحث والترتيب حسب الحجم.': 'Every installed app, with search and sorting by size.',
+    'فحص الفيروسات عبر Windows Defender، وتثبيت تحديثات ويندوز.': 'Virus scans with Windows Defender, and Windows updates.',
+    'إعداد ويندوز جديد': 'Fresh Windows setup', 'التعريفات الناقصة ومكونات الألعاب من مصادرها الرسمية.': 'Missing drivers and game components from their official sources.',
+    'أدوات الإصلاح': 'Repair tools', 'نقطة استعادة، وإصلاح ملفات ويندوز والشبكة وشريط المهام، ووضع الطاقة.': 'Restore points, Windows file, network and taskbar repair, and power modes.',
+    'فيديوهات وأغانٍ وقوائم تشغيل كاملة بالجودة التي تختارها.': 'Videos, songs and whole playlists in the quality you choose.',
+    'لا يحتاج إلى تثبيت. أربع خطوات في المرة الأولى فقط.': 'Nothing to install. Four steps, the first time only.',
+    'فك الضغط': 'Unzip', 'انقر بزر الماوس الأيمن على الملف واختر': 'Right-click the file and choose',
+    'افتح البرنامج': 'Open the program', 'شغّل': 'Double-click', 'بنقرة مزدوجة.': '.',
+    'رسالة ويندوز': 'Windows message', 'إذا ظهرت رسالة': 'If', 'اضغط': 'appears, press', 'ثم': 'then',
+    'صلاحيات المسؤول': 'Admin rights', 'اختر': 'Choose', 'ليتمكن البرنامج من تنظيف ملفات النظام أيضًا.': 'so the program can clean system files too.',
+    'ما لا يقترب منه البرنامج': 'What the program never touches',
+    'ملفاتك الشخصية لا تُحدَّد للحذف أبدًا، وإن حددتها بنفسك يطلب البرنامج تأكيدًا.': 'Your personal files are never selected for deletion; if you select them yourself, the program asks you to confirm.',
+    'الألعاب المثبتة وملفات الحفظ الخاصة بها.': 'Installed games and their save files.',
+    'البرامج المفتوحة: يتخطاها حتى تغلقها.': 'Open programs: skipped until you close them.',
+    'مكونات ويندوز الأساسية مخفية في صفحة إدارة التطبيقات حتى لا تُغلق بالخطأ.': 'Core Windows parts are hidden on the Programs page so they cannot be closed by mistake.',
+    'هل البرنامج مجاني؟': 'Is it free?', 'نعم، مجاني بالكامل ودون إعلانات.': 'Yes, completely free, with no ads.',
+    'لماذا يظهر تحذير من ويندوز؟': 'Why does Windows show a warning?',
+    'يظهر هذا التحذير مع أي برنامج جديد غير موقّع من شركة كبيرة. تم فحص البرنامج باستخدام Windows Defender ولم يُعثر على أي تهديد.': 'Windows shows it for any new program that is not signed by a big company. The program was scanned with Windows Defender and no threats were found.',
+    'هل يعمل على ويندوز 7؟': 'Does it work on Windows 7?', 'لا، يعمل على ويندوز 10 و11 فقط.': 'No, only on Windows 10 and 11.',
+    'هل يحتاج إلى الإنترنت؟': 'Does it need the internet?', 'التنظيف والتسريع يعملان دون إنترنت. صفحة التنزيل وتحديثات ويندوز وفحص الفيروسات تحتاج إلى الاتصال.': 'Cleanup and boost work offline. The download page, Windows updates and virus scans need a connection.',
+    'هل يدعم اللغة الإنجليزية؟': 'Is it available in English?', 'نعم، يمكنك التبديل بين العربية والإنجليزية من صفحة الإعدادات، وكذلك بين المظهر الرمادي والفاتح.': 'Yes, switch between Arabic and English in Settings, and between the gray and light looks.',
+    'تم التطوير بواسطة': 'Developed by', 'تابعني على حساباتي.': 'Follow me.',
+    'M07A. جميع الحقوق محفوظة. يستخدم البرنامج أدوات مفتوحة المصدر:': 'M07A. All rights reserved. Uses open-source tools:', 'و': 'and',
+    'انقر لنسخ اسم المستخدم': 'Click to copy the username', 'شعار M07A Tools': 'M07A Tools logo'
+  };
+  // remember each Arabic text piece once, so switching back restores it exactly
+  const pieces = [];
+  const walk = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, { acceptNode: n => n.parentNode.closest('script,style') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+  for (let n; (n = walk.nextNode());) { const k = n.nodeValue.trim(); if (en[k]) pieces.push({ n, ar: n.nodeValue, k }); }
+  const attrs = [...document.querySelectorAll('[alt],[title]')].flatMap(el => ['alt', 'title'].filter(a => en[el.getAttribute(a)]).map(a => ({ el, a, ar: el.getAttribute(a) })));
+  let lang = 'ar';
+  function shotBase() { return lang === 'en' ? 'img/en/shot-' : 'img/shot-'; }
+  function setLang(l) {
+    lang = l;
+    document.documentElement.lang = l; document.documentElement.dir = l === 'en' ? 'ltr' : 'rtl';
+    for (const p of pieces) p.n.nodeValue = l === 'en' ? (en[p.k] === '.' ? '.' : p.ar.replace(p.k, en[p.k])) : p.ar;
+    for (const p of attrs) p.el.setAttribute(p.a, l === 'en' ? en[p.ar] : p.ar);
+    document.getElementById('lang').textContent = l === 'en' ? 'العربية' : 'English';
+    const cur = document.querySelector('.tab[aria-selected="true"]');
+    img.src = shotBase() + cur.dataset.shot + '.png';
+    img.alt = l === 'en' ? 'M07A Tools: ' + en[names[cur.dataset.shot]] : 'صفحة ' + names[cur.dataset.shot] + ' في M07A Tools';
+    document.title = 'M07A Tools';
+    try { localStorage.setItem('m07a-lang', l); } catch (e) { }
+  }
+  document.getElementById('lang').addEventListener('click', () => setLang(lang === 'en' ? 'ar' : 'en'));
+  let saved = null; try { saved = localStorage.getItem('m07a-lang'); } catch (e) { }
+  setLang(saved || ((navigator.language || 'ar').toLowerCase().startsWith('ar') ? 'ar' : 'en'));
+  // Discord has no public page for a user: the button copies the username
+  document.getElementById('dc').addEventListener('click', e => {
+    e.preventDefault();
+    const small = e.currentTarget.querySelector('small');
+    navigator.clipboard.writeText('1ts_ok').then(() => { small.textContent = lang === 'en' ? 'Copied ✓' : 'تم النسخ ✓'; setTimeout(() => small.textContent = '1ts_ok', 2000); }).catch(() => {});
+  });
+</script>
+</body>
+</html>
