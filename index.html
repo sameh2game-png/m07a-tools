@@ -81,7 +81,7 @@ section { padding-block: 64px; }
 .shot img { width: 100%; height: auto; }
 
 /* features */
-.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .feat { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; min-width: 0; }
 .feat .ico { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; margin-bottom: 12px; }
 .feat .ico svg { width: 22px; height: 22px; }
@@ -161,7 +161,7 @@ body { background:
 .feat::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--c); }
 .feat:hover { transform: translateY(-4px); border-color: var(--c); box-shadow: 0 14px 34px rgba(0, 0, 0, .35), 0 0 30px color-mix(in srgb, var(--c) 35%, transparent); }
 .grid .feat:nth-child(1) { --c: var(--c2); } .grid .feat:nth-child(2) { --c: var(--c5); } .grid .feat:nth-child(3) { --c: var(--c3); } .grid .feat:nth-child(4) { --c: var(--c7); }
-.grid .feat:nth-child(5) { --c: var(--c4); } .grid .feat:nth-child(6) { --c: #f0b35e; } .grid .feat:nth-child(7) { --c: var(--c1); } .grid .feat:nth-child(8) { --c: var(--c6); }
+.grid .feat:nth-child(5) { --c: var(--c4); } .grid .feat:nth-child(6) { --c: #f0b35e; } .grid .feat:nth-child(7) { --c: var(--c1); } .grid .feat:nth-child(8) { --c: var(--c6); } .grid .feat:nth-child(9) { --c: var(--c4); }
 .step { transition: transform .2s; } .step:hover { transform: translateY(-3px); }
 .steps .step:nth-child(1)::before { background: linear-gradient(135deg, #5b9be6, #3f6fd0); }
 .steps .step:nth-child(2)::before { background: linear-gradient(135deg, #a58be0, #7a5cd0); }
@@ -218,7 +218,7 @@ header.scrolled { background: rgba(28, 29, 33, .96); box-shadow: 0 8px 30px rgba
     <span class="spark" style="--x:9%;--y:16%;--s:22px;--d:4.5s">&#x2726;</span><span class="spark" style="--x:30%;--y:10%;--s:14px;--d:3.6s;--t:-1.2s">&#x2726;</span><span class="spark" style="--x:4%;--y:62%;--s:16px;--d:5s;--t:-2.4s">&#x2726;</span><span class="spark" style="--x:34%;--y:72%;--s:12px;--d:3.2s;--t:-.6s">&#x2726;</span><span class="spark" style="--x:20%;--y:88%;--s:18px;--d:4.8s;--t:-3.1s">&#x2726;</span>
     <div class="wrap">
       <div>
-        <span class="badge">مجاني بالكامل • الإصدار 3.0</span>
+        <span class="badge">مجاني بالكامل • الإصدار 3.1</span>
         <h1>جهازك <em>أسرع وأنظف</em> بنقرة واحدة</h1>
         <p class="lead">أداة مجانية لويندوز تنظّف الملفات المؤقتة وذاكرة الألعاب بأمان، وتسرّع الجهاز، وتدير التطبيقات، وتفحص الفيروسات، وتنزّل الفيديوهات والأغاني، في برنامج واحد بواجهة عربية وإنجليزية.</p>
         <div class="actions">
@@ -228,7 +228,7 @@ header.scrolled { background: rgba(28, 29, 33, .96); box-shadow: 0 8px 30px rgba
           </a>
           <a class="btn" href="#screens">شاهد الواجهة</a>
         </div>
-        <div class="meta"><span>ويندوز 10 و11</span><span>بالعربية والإنجليزية</span><span class="ltr">384 KB</span></div>
+        <div class="meta"><span>ويندوز 10 و11</span><span>بالعربية والإنجليزية</span><span class="ltr">390 KB</span></div>
       </div>
       <img class="logo-big" src="img/logo.png" alt="شعار M07A Tools" width="340" height="340">
     </div>
@@ -243,6 +243,7 @@ header.scrolled { background: rgba(28, 29, 33, .96); box-shadow: 0 8px 30px rgba
       <div class="tabs" role="tablist">
         <button class="tab" role="tab" aria-selected="true" data-shot="home">الرئيسية</button>
         <button class="tab" role="tab" aria-selected="false" data-shot="clean">التنظيف</button>
+        <button class="tab" role="tab" aria-selected="false" data-shot="storage">التخزين</button>
         <button class="tab" role="tab" aria-selected="false" data-shot="apps">إدارة التطبيقات</button>
         <button class="tab" role="tab" aria-selected="false" data-shot="uninstall">إلغاء التثبيت</button>
         <button class="tab" role="tab" aria-selected="false" data-shot="protection">الحماية</button>
@@ -269,6 +270,7 @@ header.scrolled { background: rgba(28, 29, 33, .96); box-shadow: 0 8px 30px rgba
         <div class="feat"><div class="ico" style="background:rgba(227,163,90,.15)"><svg viewBox="0 0 24 24" fill="none" stroke="#e3a35a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></div><h3>إعداد ويندوز جديد</h3><p>التعريفات الناقصة ومكونات الألعاب من مصادرها الرسمية.</p></div>
         <div class="feat"><div class="ico" style="background:rgba(91,155,230,.15)"><svg viewBox="0 0 24 24" fill="none" stroke="#5b9be6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg></div><h3>أدوات الإصلاح</h3><p>نقطة استعادة، وإصلاح ملفات ويندوز والشبكة وشريط المهام، ووضع الطاقة.</p></div>
         <div class="feat"><div class="ico" style="background:rgba(219,134,174,.15)"><svg viewBox="0 0 24 24" fill="none" stroke="#db86ae" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></div><h3>التنزيل</h3><p>فيديوهات وأغانٍ وقوائم تشغيل كاملة بالجودة التي تختارها.</p></div>
+        <div class="feat"><div class="ico" style="background:rgba(69,184,184,.15)"><svg viewBox="0 0 24 24" fill="none" stroke="#45b8b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 14h.01M11 14h6"/></svg></div><h3>التخزين</h3><p>أكبر المجلدات والملفات على كل قرص، مع حذف آمن إلى سلة المحذوفات.</p></div>
       </div>
     </div>
   </section>
@@ -331,7 +333,7 @@ header.scrolled { background: rgba(28, 29, 33, .96); box-shadow: 0 8px 30px rgba
 <footer><div class="wrap">© <span id="yr">2026</span> M07A. جميع الحقوق محفوظة. يستخدم البرنامج أدوات مفتوحة المصدر: <a href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a> و<a href="https://ffmpeg.org/">FFmpeg</a>.</div></footer>
 
 <script>
-  const names = { home: 'الرئيسية', clean: 'التنظيف', apps: 'إدارة التطبيقات', uninstall: 'إلغاء التثبيت', protection: 'الحماية', tools: 'الأدوات', download: 'التنزيل', settings: 'الإعدادات' };
+  const names = { home: 'الرئيسية', clean: 'التنظيف', storage: 'التخزين', apps: 'إدارة التطبيقات', uninstall: 'إلغاء التثبيت', protection: 'الحماية', tools: 'الأدوات', download: 'التنزيل', settings: 'الإعدادات' };
   const img = document.getElementById('shot');
   document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
     document.querySelectorAll('.tab').forEach(o => o.setAttribute('aria-selected', o === t));
@@ -359,13 +361,13 @@ header.scrolled { background: rgba(28, 29, 33, .96); box-shadow: 0 8px 30px rgba
   }));
   // ---- Arabic / English: every Arabic text piece on the page has its English line here
   const en = {
-    'الواجهة': 'Screens', 'المزايا': 'Features', 'ابدأ الآن': 'Get started', 'مجاني بالكامل • الإصدار 3.0': 'Completely free • Version 3.0', 'طريقة التشغيل': 'How to run', 'الأسئلة الشائعة': 'FAQ', 'تنزيل': 'Download',
+    'الواجهة': 'Screens', 'المزايا': 'Features', 'ابدأ الآن': 'Get started', 'مجاني بالكامل • الإصدار 3.1': 'Completely free • Version 3.1', 'طريقة التشغيل': 'How to run', 'الأسئلة الشائعة': 'FAQ', 'تنزيل': 'Download',
     'جهازك': 'A', 'أسرع وأنظف': 'faster, cleaner', 'بنقرة واحدة': 'PC in one click',
     'أداة مجانية لويندوز تنظّف الملفات المؤقتة وذاكرة الألعاب بأمان، وتسرّع الجهاز، وتدير التطبيقات، وتفحص الفيروسات، وتنزّل الفيديوهات والأغاني، في برنامج واحد بواجهة عربية وإنجليزية.': 'A free Windows tool that safely cleans temporary files and game caches, speeds up your PC, manages apps, scans for viruses, and downloads videos and music, all in one program with an Arabic and English interface.',
     'تنزيل M07A Tools': 'Download M07A Tools', 'شاهد الواجهة': 'See the interface',
     'الإصدار 3.0': 'Version 3.0', 'ويندوز 10 و11': 'Windows 10 and 11', 'مجاني بالكامل': 'Completely free', 'بالعربية والإنجليزية': 'Arabic and English',
     'واجهة بسيطة وهادئة': 'A simple, calm interface', 'كل شيء في مكان واضح. اختر صفحة لمشاهدتها.': 'Everything has a clear place. Pick a page to see it.',
-    'الرئيسية': 'Home', 'التنظيف': 'Cleanup', 'إدارة التطبيقات': 'Programs', 'إلغاء التثبيت': 'Uninstall', 'الحماية': 'Protection', 'الأدوات': 'Tools', 'التنزيل': 'Download', 'الإعدادات': 'Settings',
+    'الرئيسية': 'Home', 'التنظيف': 'Cleanup', 'إدارة التطبيقات': 'Programs', 'إلغاء التثبيت': 'Uninstall', 'الحماية': 'Protection', 'الأدوات': 'Tools', 'التنزيل': 'Download', 'الإعدادات': 'Settings', 'التخزين': 'Storage', 'أكبر المجلدات والملفات على كل قرص، مع حذف آمن إلى سلة المحذوفات.': 'The largest folders and files on every drive, with safe deleting to the Recycle Bin.',
     'كل ما يحتاجه جهازك في برنامج واحد': 'Everything your PC needs in one program', 'بدل خمسة برامج مختلفة، صفحة لكل مهمة.': 'Instead of five different programs, one page for each job.',
     'تنظيف آمن': 'Safe cleanup', 'الملفات المؤقتة وذاكرة الألعاب والمتصفحات، مع فحص قبل الحذف.': 'Temporary files and game and browser caches, scanned before anything is deleted.',
     'تسريع الجهاز': 'Speed boost', 'تحرير الذاكرة يدويًا أو تلقائيًا، دون المساس باللعبة المفتوحة.': 'Frees memory manually or automatically, without touching the game you are playing.',
